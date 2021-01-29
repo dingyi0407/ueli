@@ -52,6 +52,8 @@ import { BrowserBookmarksPlugin } from "../plugins/browser-bookmarks-plugin/brow
 import { GoogleChromeBookmarkRepository } from "../plugins/browser-bookmarks-plugin/google-chrome-bookmark-repository";
 import { ControlPanelPlugin } from "../plugins/control-panel-plugin/control-panel-plugin";
 
+import { CsvReaderPlugin} from "../plugins/csv-reader-plugin/csv-reader"
+
 const filePathValidator = isWindows(platform()) ? isValidWindowsFilePath : isValidMacOsFilePath;
 const filePathExecutor = isWindows(platform()) ? executeFilePathWindows : executeFilePathMacOs;
 const filePathLocationExecutor = openFileLocation;
@@ -169,6 +171,16 @@ export function getProductionSearchEngine(config: UserConfigOptions, translation
         searchPlugins.push(
             new ControlPanelPlugin(
                 config.controlPanelOptions));
+        
+        searchPlugins.push(
+            new CsvReaderPlugin(
+                config.csvReaderOptions,
+                electronClipboardCopier));
+        logger.debug("CsvReader may be loadded");
+        logger.debug(__dirname);
+        // for (let plugin of searchPlugins) {
+        //     logger.debug(plugin)
+        // }
     }
     if (isMacOs(platform())) {
         executionPlugins.push(

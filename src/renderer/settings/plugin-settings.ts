@@ -15,5 +15,6 @@ export enum PluginSettings {
     SimpleFolderSearch = "Simple Folder Search",
     ColorConverter = "Color Converter",
     BrowserBookmarks = "Browser Bookmarks",
-    Dictionary = "Dictionary",
+    CsvReader = "CsvReader",
+    Dictionary = "Dictionary"
 }

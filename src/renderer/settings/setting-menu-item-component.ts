@@ -121,6 +121,8 @@ export const settingMenuItemComponent = Vue.extend({
                     return config.websearchOptions.isEnabled;
                 case PluginSettings.Workflow:
                     return config.workflowOptions.isEnabled;
+                case PluginSettings.CsvReader:
+                    return config.csvReaderOptions.isEnabled;
                 case SettingOsSpecific.ControlPanel.replace(`${platform()}:`, ""):
                     return config.controlPanelOptions.isEnabled;
                 case SettingOsSpecific.Everything.replace(`${platform()}:`, ""):

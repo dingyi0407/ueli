@@ -39,13 +39,15 @@ export const settingsComponent = Vue.extend({
                 visible: false,
             },
             pluginSettingMenuItems: Object.values(PluginSettings)
-                .concat(Object
-                    .values(SettingOsSpecific)
-                    .filter((setting: string) => setting.startsWith(platform()))
-                    .map((setting: string) => setting.replace(`${platform()}:`, "")))
-                .sort(),
-        };
-    },
+            .map((setting) => setting.toString())
+            .concat(Object
+                .values(SettingOsSpecific)
+                .map((setting) => setting.toString())
+                .filter((setting: string) => setting.startsWith(platform()))
+                .map((setting: string) => setting.replace(`${platform()}:`, "")))
+            .sort(),
+    };
+},
     methods: {
         removeNotification() {
             this.notification.visible = false;
@@ -138,6 +140,7 @@ export const settingsComponent = Vue.extend({
                 <user-confirmation :translations="translations"></user-confirmation>
                 <browser-bookmark-settings :config="config" :translations="translations"></browser-bookmark-settings>
                 <control-panel-settings :config="config" :translations="translations"></control-panel-settings>
+                <csv-reader-settings :config="config" :translations="translations"></csv-reader-settings>
             </div>
         </div>
     `,

@@ -69,6 +69,7 @@ const logger = isDev()
     ? new DevLogger()
     : new ProductionLogger(logFilePath, filePathExecutor);
 let searchEngine = getProductionSearchEngine(config, translationSet, logger);
+logger.debug("searchEngine Loaded")
 
 let rescanInterval = config.generalOptions.rescanEnabled
     ? setInterval(() => refreshAllIndexes(), getRescanIntervalInMilliseconds(Number(config.generalOptions.rescanIntervalInSeconds), minimumRefreshIntervalInSeconds))
@@ -453,6 +454,8 @@ function createMainWindow() {
     mainWindow.on("closed", quitApp);
     mainWindow.on("move", onMainWindowMove);
     mainWindow.loadFile(join(__dirname, "..", "main.html"));
+    logger.debug('====TES==============');
+    logger.debug(__dirname);
 }
 
 function mainWindowNeedsToBeTransparent(userConfigOptions: UserConfigOptions): boolean {

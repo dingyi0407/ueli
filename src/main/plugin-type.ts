@@ -23,4 +23,5 @@ export enum PluginType {
     BrowserBookmarks = "browser-bookmarks",
     Test = "test-plugin",
     ControlPanel = "control-panel-plugin",
+    CsvReader = "csv-reader"
 }

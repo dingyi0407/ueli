@@ -44,7 +44,7 @@ export class SearchEngine {
         this.favoriteManager = new FavoriteManager(favoriteRepository, translationSet);
     }
 
-    public  getSearchResults(userInput: string): Promise<SearchResultItem[]> {
+    public getSearchResults(userInput: string): Promise<SearchResultItem[]> {
         return new Promise((resolve, reject) => {
             if (userInput === undefined || userInput.length === 0) {
                 resolve([]);
@@ -185,7 +185,6 @@ export class SearchEngine {
             const pluginPromises = this.searchPlugins
                 .filter((plugin) => plugin.isEnabled())
                 .map((plugin) => plugin.getAll());
-
             Promise.all(pluginPromises)
                 .then((pluginsResults) => {
                     const all = pluginsResults.length > 0
