@@ -61,6 +61,8 @@ import { dictionarySettingsComponent } from "./settings/dictionary-settings-comp
 import { browserBookmarkSettingsComponent } from "./settings/browser-bookmark-settings-component";
 import { controlPanelSettingsComponent } from "./settings/control-panel-settings-component";
 import { csvReaderSettingsComponent} from "./settings/csv-reader-settings-component"
+import { csvReaderEditingModalComponent } from "./settings/modals/csv-reader-editing-modal-component";
+
 
 Vue.component("user-input", userInputComponent);
 Vue.component("search-results", searchResultsComponent);
@@ -107,6 +109,7 @@ Vue.component("plugin-toggle", pluginToggle);
 Vue.component("browser-bookmark-settings", browserBookmarkSettingsComponent);
 Vue.component("control-panel-settings", controlPanelSettingsComponent);
 Vue.component("csv-reader-settings", csvReaderSettingsComponent);
+Vue.component("csv-reader-editing", csvReaderEditingModalComponent)
 
 const initialConfig = new ElectronStoreConfigRepository(deepCopy(defaultUserConfigOptions)).getConfig();
 

@@ -60,6 +60,7 @@
     "typescript": "^3.5.3",
     "vue": "^2.6.10",
     "vue-color": "^2.7.0",
+    "vue-devtools": "^5.1.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "winston": "^3.2.1"

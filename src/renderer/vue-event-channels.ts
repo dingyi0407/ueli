@@ -48,4 +48,6 @@ export enum VueEventChannels {
     downloadUpdate = "download-update",
     refreshIndexesStarted = "refresh-indexes-started",
     refreshIndexesFinished = "refresh-indexes-finished",
+    openCsvReaderEditingModal = "open-csv-reader-editing-modal",
+    csvReaderOptionSaved= "csv-reader-search-option-saved",
 }

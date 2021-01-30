@@ -1,3 +1,5 @@
+// TODO: repository
+
 import { SearchPlugin } from "../../search-plugin";
 import { PluginType } from "../../plugin-type";
 // import { TranslationSet } from "../../../common/translation/translation-set";
@@ -73,18 +75,21 @@ export class CsvReaderPlugin implements SearchPlugin {
         return new Promise((resolve) => {
             // TODO: set filepath from config
             let retSearchItem: CsvRecord[] = []
-            let filenames: string[] = ['C:\\repo\\ueli\\src\\main\\plugins\\csv-reader-plugin\\randomGenerateResult.csv',
-                                        'C:\\test.csv'];
-            for (let filename of filenames) {
-              fs.readFile(filename, 'utf-8', (err, f) => {
+            // let filenames: string[] = ['C:\\repo\\ueli\\src\\main\\plugins\\csv-reader-plugin\\randomGenerateResult.csv',
+            //                             'C:\\test.csv'];
+            for (let csvOption of this.config.csvs) {
+              let filePath = csvOption.path
+              let reversible = csvOption.reverseSearchEnabled
+              fs.readFile(filePath, 'utf-8', (err, f) => {
                 parse(f, function(err, data: string[][]) {
                     for (let line of data) {
                         let result = line.shift()!
                         let item = { result: result, queries: line }
-                        // add reversable flag
-                        let itemReversed = {result: line.join(","), queries: [result]}
                         retSearchItem.push(item)
-                        retSearchItem.push(itemReversed)
+                        if (reversible) {
+                          let itemReversed = {result: line.join(","), queries: [result]}
+                          retSearchItem.push(itemReversed)
+                        }
                     }
                 })
               })
